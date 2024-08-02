@@ -17,9 +17,9 @@
 #[cfg(unix)]
 pub mod posix;
 
-#[cfg(target_os = "linux")]
+#[cfg(all(target_os = "linux", not(feature="ohos_tun")))]
 pub mod linux;
-#[cfg(target_os = "linux")]
+#[cfg(all(target_os = "linux", not(feature="ohos_tun")))]
 pub use self::linux::{create, Configuration, Device, Queue};
 
 #[cfg(target_os = "macos")]
@@ -32,9 +32,9 @@ pub mod ios;
 #[cfg(target_os = "ios")]
 pub use self::ios::{create, Configuration, Device, Queue};
 
-#[cfg(target_os = "android")]
+#[cfg(any(target_os = "android", feature="ohos_tun"))]
 pub mod android;
-#[cfg(target_os = "android")]
+#[cfg(any(target_os = "android", feature="ohos_tun"))]
 pub use self::android::{create, Configuration, Device, Queue};
 
 #[cfg(test)]

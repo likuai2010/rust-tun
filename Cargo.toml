@@ -31,6 +31,8 @@ futures = "0.3"
 
 [features]
 async = ["tokio", "tokio-util", "bytes", "byteorder", "futures-core"]
+ohos_tun = []
+async-ohos = ["async", "ohos_tun"]
 
 [[example]]
 name = "read-async"
